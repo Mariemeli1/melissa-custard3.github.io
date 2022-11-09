@@ -35,7 +35,16 @@
 
 // YOUR CODE GOES BELOW HERE //
 function makeContact(id, nameFirst, nameLast) {
-
+    //create a object to later return
+    var obj = {};
+    //give a new key of id with a value of id
+    obj.id = id;
+    //give a new key of nameFirst with a value of nameFirst
+    obj.nameFirst = nameFirst;
+    //give a newkey of namelast witha value of namelast
+    obj.nameLast = nameLast;
+    //return object
+    return obj;
 } 
 
 
@@ -43,12 +52,48 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];//set to empty array
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        addContact: function(contact){
+            //push contact object into contacts list
+            contacts.push(contact);
+        },
+        findContact: function(fullName){
+            //iterate through contacts
+            for(let i = 0; i < contacts.length; i++){
+              //determine if contacts list contains contact object that equals fullname
+                if(`${contacts[i].nameFirst} ${contacts[i].nameLast}` === fullName){
+                    //return that current object
+                    return contacts[i];
+                }else{//else
+                    //return undefined
+                    return undefined;
+                }
+            }
+        },
+        removeContact: function(contact){
+            //pop off contact object from contacts list
+            contacts.pop(contact);
+        },
+        printAllContactNames: function(){
+            //create a string to later return
+            var str = "";
+            //iterate through contacts
+            for(let i = 0; i < contacts.length; i++){
+                //string does not equal an empty string
+                if(str !== ""){
+                    //add and assign new line to my empty string
+                    str += "\n";
+                    
+                }//add and assign first name and last name to string
+                str += contacts[i].nameFirst + " " + contacts[i].nameLast;
+            }//return my string
+            return str;
         }
     }
 }
