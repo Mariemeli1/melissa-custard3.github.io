@@ -14,8 +14,7 @@
 
 ## How to run os test/os submit
 1) in terminal, type os test/os submit
-2) select bootcamp session
-3) 
+2) select bootcamp session 
 
 ## How to run git commands in terminal
 1) in terminal, type => git add -A

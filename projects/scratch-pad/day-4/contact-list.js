@@ -85,13 +85,15 @@ function makeContactList() {
             var str = "";
             //iterate through contacts
             for(let i = 0; i < contacts.length; i++){
+             //create a variable and assign it to name first and name last
+            var name = `${contacts[i].nameFirst} ${contacts[i].nameLast}`;
                 //string does not equal an empty string
                 if(str !== ""){
                     //add and assign new line to my empty string
                     str += "\n";
                     
-                }//add and assign first name and last name to string
-                str += contacts[i].nameFirst + " " + contacts[i].nameLast;
+                }//add and assign name to string
+                str += name;
             }//return my string
             return str;
         }
