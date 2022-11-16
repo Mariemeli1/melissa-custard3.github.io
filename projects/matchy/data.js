@@ -116,9 +116,16 @@ console.log(animals.length);
 //create a variable and set it to a array
 var friends = [];
 //create a function called get random
-function getRandom(max) {
-  return Math.floor(Math.random() * max);
+function getRandom(animals) {
+  return Math.floor(Math.random() * animals.length);
 }
+console.log(getRandom(animals));
+//add random animal name to friends array
+ friends.push(animals[getRandom(animals)].name);
+ //add a property of friends to our animals array and set it to an array
+animals[getRandom(animals)]['friends'] = friends;
+
+
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
