@@ -86,8 +86,8 @@ function welcomeMessage(object) {
     console.log(object);
     //iterate through object to get name property
     for(let key in object){
-        var obj = object.name[0].toUpperCase() + object.name.slice(1)
-    return 'Welcome ' + obj.name + ' !';
+     // return Welcome object name with first letter capitalized and adding a exclamation mark at the end   
+    return 'Welcome ' + object.name[0].toUpperCase() + object.name.slice(1) + '!';
     }
 }
 
