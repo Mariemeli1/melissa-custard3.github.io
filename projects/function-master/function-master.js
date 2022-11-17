@@ -2,8 +2,11 @@
 // Function 1 - Object Values ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function objectValues(object) {
 
+
+function objectValues(object) {
+//use object.values to return the objects values in an array
+return Object.values(object)
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +14,10 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+//use object.keys to get the keys and put it in an array
+var arr = Object.keys(object);
+//use join method to join them into a string seperated by a space
+return arr.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +25,17 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    var arr= [];
+    //for in loop
+    for(let key in object){
+        //determine if values are in a string
+        if(typeof object[key] === "string"){
+            //push values into array
+            arr.push([object[key]]);
+        }
+    }
+    //use join method to join the values into a string seperated by a space
+    return arr.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,7 +43,15 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
+    //check if collection is an array
+    if(Array.isArray(collection)){
+        //return array in a string
+        return 'array';
+        //else if collection is an object
+    } else if(typeof collection === 'object'){
+        //return object as a string 
+        return 'object';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -35,7 +59,8 @@ function arrayOrObject(collection) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+    //return input string with first letter capitalized using uppercase method and slice method
+    return string[0].toUpperCase() + string.slice(1);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,7 +68,14 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
-    
+  //create an array and set it to the input string and split it
+  let arr = string.split(" ");
+  //iterate through arr
+  for(let i = 0; i < arr.length; i++){
+    //capitalize each first letter of every word using charAt, upperCase and slice.
+    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+  }//return the array into a string seperated by spaces using the join method
+  return arr.join(" ");
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -51,7 +83,12 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    console.log(object);
+    //iterate through object to get name property
+    for(let key in object){
+        var obj = object.name[0].toUpperCase() + object.name.slice(1)
+    return 'Welcome ' + obj.name + ' !';
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
