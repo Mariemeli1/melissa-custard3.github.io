@@ -9,6 +9,8 @@
  * and read every instruction carefully.
  */
 
+const { arrayOrObject } = require("../function-master/function-master");
+
 //////////////////////////////////////////////////////////////////////
 // Step 1 - Search ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -63,16 +65,26 @@ function remove(animals, name){
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 //animals = array
-//animaal = object to be added
+//animal = object to be added
 function add(animals, animal){
-    //check if animal has a name property greater than 0 length
-    //if it has a species property greater than 0 length
-    //and if it has a unique name that no other animals have
-    if(animal.name.length > 0 && animal.species.length > 0 && animal.name !== new Set ){
-    animals.push(animal);
-    } else if(animal.name === new Set){
-        animals.splice(0, 1);
+    //create a var to hold a bool
+    var test = false;
+   //iterate through animals array
+   for(let i = 0; i < animals.length; i++){
+     //check if array name is equal to the input object name
+     if(animals[i].name === animal.name){
+     //change test var to true
+     test = true;
+     }
     }
+     //check if test is equal to false
+     if(test === false){
+        //check if animal name length is greater than 0 and if the animal species length is greater than 0
+        if(animal.name.length > 0 && animal.species.length > 0){
+        //push animal object into animals array
+        animals.push(animal);       
+        }
+      }
     
 }
 
