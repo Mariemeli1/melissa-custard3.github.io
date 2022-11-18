@@ -96,15 +96,30 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+//return property name and property species capitalized at the first letter and putting 'is a' in between
+return object.name[0].toUpperCase() +  object.name.slice(1) + ' is a ' + object.species[0].toUpperCase() + object.species.slice(1);
 }
-
+//checking my work
+console.log(profileInfo({name: "jake", species: "dog"}));
 //////////////////////////////////////////////////////////////////////
 // Function 9 - Maybe Noises /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+    //iterate through object with a for in loop
+    for(let key in object){
+        //check if there is a noises array
+        if(object.noises.length > 0){
+         //return them as a string seperated by spaces using join
+         return object.noises.join(" ");
+         //else if there are no noises array
+        }else if(object.noises.length === 0){
+        //return "there are no noises"
+        return 'there are no noises';
+        //else if there isnt a noise array
+        }
+    }//returns there are no noises if there is no noises array
+    return 'there are no noises'
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -112,7 +127,14 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+    //check if string includes word
+    if(string.includes(word)){
+        //return true
+        return true;
+    }else{
+        //return false
+        return false;
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -120,7 +142,10 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+    //push name into objects friends array
+    object.friends.push(name);
+    //return object
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -128,15 +153,35 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+    //iterate through object
+    for(let key in object){
+        //check if name is a friend of object
+        if(object.friends.includes(name)){
+            //return true
+            return true;
+        //else
+        }else
+        //return false
+        return false
+    }//returns false if there is no friends array
+    return false;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+//return a list of all the names that name is not friends with
 function nonFriends(name, array) {
-
+    //create a new array to later return with all the names that name is not friends with
+    var loners = [];
+    //iterate through array
+    for(let i = 0; i < array.length; i++){
+      if(array[i].name !== friends){
+        //push that name into new array
+        loners.push(name);
+      }
+    }
+    return loners;
 }
 
 //////////////////////////////////////////////////////////////////////
