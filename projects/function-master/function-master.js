@@ -171,16 +171,21 @@ function isFriend(name, object) {
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 //return a list of all the names that name is not friends with
+
 function nonFriends(name, array) {
     //create a new array to later return with all the names that name is not friends with
     var loners = [];
-    //iterate through array
+    //iterate through input array
     for(let i = 0; i < array.length; i++){
-      if(array[i].name !== friends){
-        //push that name into new array
-        loners.push(name);
+        //check if current name is not the input name
+      if(array[i].name !== name){
+      //check if name is not in friends list
+        if(!(array[i].friends.includes(name))){
+      //push that name into new array
+      loners.push(array[i].name);
+        }
       }
-    }
+    }//return loners array
     return loners;
 }
 
