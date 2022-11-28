@@ -194,7 +194,10 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+    //give input key the value of input value
+    object[key] = value;
+    //return object
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
