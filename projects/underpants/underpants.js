@@ -101,7 +101,28 @@ _.typeOf = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, num){
+ //determine if array isnt an array
+ if(!Array.isArray(array)){
+    //return empty array
+    return [];
+ }
+ //determine if number is not given
+ if(num === undefined){
+    //return the first element in array
+    return array[0];
+ }
+ //determine if number is greater than the arrays length
+ if(num > array.length){
+    //return whole array
+    return array;
+ }
+ //determine if number is a negative number
+ if(num < 0){
+    //return empty array
+    return [];
+ }
+}
 
 /** _.last
 * Arguments:
