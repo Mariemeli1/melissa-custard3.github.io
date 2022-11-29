@@ -20,7 +20,10 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function(value){
+    //returns input value unchanged
+    return value;
+}
 
 /** _.typeOf
 * Arguments:
@@ -41,7 +44,45 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+_.typeOf = function(value){
+    //determine if value is an array
+    if(Array.isArray(value)){
+        //return array as a string
+        return 'array';
+        //else if value is not null
+    }else if(value === null){
+        //return null as a string
+        return 'null';
+        //else if value is not an instance of date
+    }else if(value instanceof Date){
+        //return date as a string
+        return 'date';
+        //else if value is a number
+    }else if(typeof value === 'number'){
+        //return number as a string
+        return 'number';
+        //else if value is a string
+    }else if(typeof value === 'string'){
+        //return string as a string
+        return 'string';
+        //else if value is a bool
+    }else if(typeof value === 'boolean'){
+        //return boolean as a string
+        return 'boolean';
+        //else if value is an object
+    }else if(typeof value === 'object'){
+        //return object as a string
+        return 'object';
+        //else if value is undefined
+    }else if(typeof value === 'undefined'){
+        //return undefined as a string
+        return 'undefined';
+        //else if value is a function
+    }else if(typeof value === 'function'){
+        //return function as a string
+        return 'function';
+    }
+}
 
 /** _.first
 * Arguments:
@@ -129,7 +170,24 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(collection, func){
+    //determine if collection is an array
+    if(Array.isArray(collection)){
+        //iterate through collection with a for of loop(array)
+        for (let i = 0; i < collection.length; i ++){
+           //invoking callback func and passing in 
+          //current element//current index//collection itself as arguments
+           func(collection[i], i, collection);
+        }
+        //else collection is an object
+       }else { 
+         //iterate through collection with a for in loop(object)
+         for (let key in collection){ //access to each key in object
+          func(collection[key], key, collection);
+         }
+       }
+   
+}
 
 /** _.unique
 * Arguments:
