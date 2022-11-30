@@ -261,10 +261,15 @@ _.each = function(collection, func){
 _.unique = function(array){
  //create a new array
  var newArr = [];
- //use index of function from above
- _.indexOf(array, function(arr){
-    newArr.push(array);
- })
+ //iterate through array
+ for(let i = 0; i < array.length; i++){
+    //determine if newArr .indexof(array) is directly equal to -1
+    if(newArr.indexOf(array[i]) === -1){
+        //push arrray[i] into new array
+        newArr.push(array[i]);
+    }
+ }
+   //return new array
    return newArr;
 }
 
