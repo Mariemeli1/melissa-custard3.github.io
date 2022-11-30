@@ -259,8 +259,13 @@ _.each = function(collection, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 _.unique = function(array){
- //
-   
+ //create a new array
+ var newArr = [];
+ //use index of function from above
+ _.indexOf(array, function(arr){
+    newArr.push(array);
+ })
+   return newArr;
 }
 
     
