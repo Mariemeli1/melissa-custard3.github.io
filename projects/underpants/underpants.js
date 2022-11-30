@@ -263,7 +263,7 @@ _.unique = function(array){
  var newArr = [];
  //iterate through array
  for(let i = 0; i < array.length; i++){
-    //determine if newArr .indexof(array) is directly equal to -1
+    //determine if the new array doesnt contain targeted value in given array
     if(newArr.indexOf(array[i]) === -1){
         //push arrray[i] into new array
         newArr.push(array[i]);

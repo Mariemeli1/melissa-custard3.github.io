@@ -205,7 +205,14 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+//iterate through array
+    for(let i = 0; i < array.length; i++){
+     //determine if input object is in array
+     if(object.hasOwnProperty(array[i])){
+        //delete object properties in array
+        delete object[array[i]];
+     }
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -213,7 +220,13 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    //create a new array 
+    //use the spread operator,and new key word to create a new array
+    //use Set to remove duplicate and put it into new array
+    var newArr = [...new Set(array)]
+    //return the new array
+    return newArr;
+   
 }
 
 //////////////////////////////////////////////////////////////////////
