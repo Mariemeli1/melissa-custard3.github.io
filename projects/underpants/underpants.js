@@ -121,7 +121,8 @@ _.first = function(array, num){
  if(num < 0){
     //return empty array
     return [];
- }
+ }//return array sliced
+    return array.slice(0, num);
 }
 
 /** _.last
@@ -142,6 +143,28 @@ _.first = function(array, num){
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, num){
+    //determine if array is an array
+    if(!Array.isArray(array)){
+        //return empty array
+        return [];
+    }//determine if number is not given
+    if(num === undefined){
+    //return the last element in array
+    return array[array.length - 1];
+    }
+    //determine if number is greater than the arrays length
+    if(num > array.length){
+    //return whole array
+    return array;
+    }
+    //determine if number is a negative number
+    if(num < 0){
+    //return empty array
+    return [];
+    }//return array sliced
+    return array.slice(1);
+}
 
 /** _.indexOf
 * Arguments:
@@ -158,7 +181,18 @@ _.first = function(array, num){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, val){
+    //iterate through array
+    for(let i = 0; i < array.length; i++){
+        //if array[i] includes the first occurance of value
+        if(array[i].includes(val)){
+            //return index
+            return i;
+        }
+     
+    }//return -1 if array[i] does not include the first occurance of value
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -174,7 +208,12 @@ _.first = function(array, num){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+    //ternary operator array contains value return true else return false
+   return array.includes(value) ? true : false
+    
+  
+}
 
 /** _.each
 * Arguments:
@@ -219,6 +258,12 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+_.unique = function(array){
+ //
+   
+}
+
+    
 
 
 /** _.filter
