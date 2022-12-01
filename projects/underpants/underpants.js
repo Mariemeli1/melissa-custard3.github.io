@@ -291,7 +291,20 @@ _.unique = function(array){
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function(array, func){
+    //create a empty array
+    var arr = [];
+    //iterate through array
+    for(let i = 0; i < array.length; i++){
+        //determine if calling func with its element, index and array passed in is true
+        if(func(array[i], i, array) === true){
+            //push in array[i] into new array
+            arr.push(array[i]);
+        }
+    }
+    //return arr
+    return arr;
+}
 
 /** _.reject
 * Arguments:
@@ -305,6 +318,20 @@ _.unique = function(array){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+_.reject = function(array, func){
+    //create a new array
+    var output = [];
+    //iterate through array
+    for(let i = 0; i < array.length; i++){
+        //determine if calling func with its element, index and array passed in is false
+        if(func(array[i], i, array) === false){
+            //push in array[i] into new array;
+            output.push(array[i]);
+        }
+    }
+    //return output array
+    return output;
+}
 
 
 /** _.partition
@@ -325,7 +352,30 @@ _.unique = function(array){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = function(array, func){
+    //creat array
+    var arr = [];
+    //create a new array
+    var arr1 = [];
+    //create another array 
+    var arr2 = [];
+    //iterate through input array
+    for(let i = 0; i < array.length; i++){
+        //determine if  calling the func  and passing  in all elemnt, index and array is true 
+        if(func(array[i], i, array) === true){
+        //push in array[i] to arr1
+        arr1.push(array[i]);
+        }
+        //determine if  calling the func  and passing  in all elemnt, index and array is false
+        if(func(array[i], i, array) === false){
+            //push in array[i] to arr2
+            arr2.push(array[i]);
+        }
+    }//use spread operator to push in arr1 and arr2 with array literals around them into arr to create 2 sub arrays
+    var subArray = [...arr, ...[arr1], ...[arr2]];
+    //return subArray
+    return subArray;
+}
 
 /** _.map
 * Arguments:
@@ -342,6 +392,27 @@ _.unique = function(array){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
+_.map = function(collection, func){
+    //create a output array
+    var output = [];
+    //iterate through collection 
+    for(let i = 0; i < collection; i++){
+    //determine if collection is an array
+         if(Array.isArray(collection)){
+        //call function and pass in element, index and collection and push into output array
+        output.push(func(collection[i], i, collection))
+        //else its an object
+         }else {
+            //iterate through collection(object)
+            for(let key in collection){
+            //call function and pass in its value, key and collection and push into output array
+            output.push(func(collection[key], key, collection))
+            }
+         }
+    }
+    //return output array
+    return output;
+}
 
 
 /** _.pluck
@@ -418,8 +489,29 @@ _.unique = function(array){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
-
+_.reduce = function(arr, func, seed){
+      //create a result variable
+      let result;
+      //determine if seed was not given a value
+      if(seed === undefined){
+      //assign result value to first value in array
+      result = arr[0];
+      //iterate through input array starting at the 1 index
+          for(let i = 1; i < arr.length; i++){
+          //assign result to function call passing in previous result, element index, and the whole array
+         result = func(result, arr[i], i, arr);
+          }          //aka accumulator
+      } else {
+          //assign result to the seed value
+          result = seed;
+          //iterate through array
+          for(let i = 0; i < arr.length; i++){
+              //assign result to function call passing in previous result, element index, and the whole array
+              result = func(result, arr[i], i, arr);
+          }
+      }//return result
+      return result;
+  }
 /** _.extend
 * Arguments:
 *   1) An Object
