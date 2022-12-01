@@ -395,21 +395,21 @@ _.partition = function(array, func){
 _.map = function(collection, func){
     //create a output array
     var output = [];
-    //iterate through collection 
-    for(let i = 0; i < collection; i++){
     //determine if collection is an array
          if(Array.isArray(collection)){
+             //iterate through collection 
+        for(let i = 0; i < collection.length; i++){
         //call function and pass in element, index and collection and push into output array
-        output.push(func(collection[i], i, collection))
+        output.push(func(collection[i], i, collection));
         //else its an object
-         }else {
+        }
+            }else {
             //iterate through collection(object)
             for(let key in collection){
             //call function and pass in its value, key and collection and push into output array
-            output.push(func(collection[key], key, collection))
-            }
-         }
-    }
+            output.push(func(collection[key], key, collection));
+             }
+         }       
     //return output array
     return output;
 }
@@ -425,7 +425,21 @@ _.map = function(collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function(array, prop){
+    //array is an array of objects
 
+    //create a new array
+    var arr = [];
+    //iterate through array
+    for(let i = 0; i < array.length; i++){
+        //determine if array[i] has a prop value
+       if(array[i]['key'] === prop){
+        //push array[i] into new array
+        arr.push(array[i]);
+       }
+    }
+    return arr;
+}
 
 /** _.every
 * Arguments:
