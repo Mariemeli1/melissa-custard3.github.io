@@ -34,7 +34,7 @@ var femaleCount = function(array){
     ///determining if current gender is female
      if(current.gender === 'female'){
       //increment acc
-       return  acc++;
+       return  acc + 1;
       } else {
         //return accumulator
        return acc;
@@ -56,11 +56,35 @@ var oldestCustomer = function(array) {
         }
     });//return the variable old
     return old.name;
-};;
+};
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    let youngin = _.reduce(array, function(acc,current){
+        //if the acc aage is less than current age
+        if(acc.age < current.age){
+            //return acc
+            return acc;
+        }else{
+            //return current
+            return current;
+        }
+    }); //return the variable old
+    return youngin.name;
+};
 
-var averageBalance;
+var averageBalance = function(array){
+    let avg = _.reduce(array, function(acc, current){
+      //added and assigned accumulator to current balance
+     return acc += current.balance;
+  //seed value of 0 to return a number
+    }, 0)
+    //created a variable to hold the balance
+    var bal = avg / array.length;
+    //use replace method and regex to replace the dollar sign and the commas
+    bal.replace(/[$, ,]/g, "");
+    //return balance
+    return bal;
+  };
 
 var firstLetterCount;
 
