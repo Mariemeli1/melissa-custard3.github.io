@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+
+
 var _ = {};
 
 
@@ -432,12 +434,10 @@ _.pluck = function(array, prop){
     var arr = [];
     //iterate through array
     for(let i = 0; i < array.length; i++){
-        //determine if array[i] has a prop value
-       if(array[i]['key'] === prop){
-        //push array[i] into new array
-        arr.push(array[i]);
-       }
+        //push array[i]and input prop into new array
+        arr.push(array[i][prop]);
     }
+    //return array
     return arr;
 }
 
@@ -461,6 +461,57 @@ _.pluck = function(array, prop){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
+_.every = function(collection, func){
+ //determine if func was not passed in
+ if(func === undefined ){
+    //determine if collection is an array
+    if(Array.isArray(collection)){
+        //iterate through collections array
+        for(let i = 0; i < collection.length; i++){
+            //determine if collection[i] is false
+            if(collection[i] === false){
+                //return false;
+                return false;
+            }
+        }
+    } else { //else
+        //iterate through object
+        for(let key in collection){
+            //determine if collection[key] is false
+            if(collection[key] === false){
+                //return false;
+                return false;
+            }
+        }
+    }
+
+} else{ //else
+//check if array is an array
+    if(Array.isArray(collection)){
+        //iterate through array
+        for(let i = 0; i < collection.length; i++){
+            //determine if calling func and passing in its current element, index and the array is false
+            if(func(collection[i], i, collection) === false){
+                //return false
+                return false;
+            }
+        }
+    } else{
+        //else its an object
+        //iterate through object usin a for in loop
+        for(let key in collection){
+            //determine if calling func and passing in its value, key and the object is false
+            if(func(collection[key], key, collection) === false){
+                //return false
+                return false;
+            }
+        }
+    }
+}
+//return true
+return true;
+}
+
 
 
 /** _.some
@@ -483,6 +534,56 @@ _.pluck = function(array, prop){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
+_.some = function(collection, func){
+    //determine if func was not passed in
+ if(func === undefined ){
+    //determine if collection is an array
+    if(Array.isArray(collection)){
+        //iterate through collections array
+        for(let i = 0; i < collection.length; i++){
+            //determine if collection[i] is true
+            if(collection[i] === true){
+                //return true;
+                return true;
+            }
+        }
+    } else { //else
+        //iterate through object
+        for(let key in collection){
+            //determine if collection[key] is true
+            if(collection[key] === true){
+                //return false;
+                return true;
+            }
+        }
+    }
+
+} else{ //else
+//check if array is an array
+    if(Array.isArray(collection)){
+        //iterate through array
+        for(let i = 0; i < collection.length; i++){
+            //determine if calling func and passing in its current element, index and the array is true
+            if(func(collection[i], i, collection) === true){
+                //return true
+                return true;
+            }
+        }
+    } else{
+        //else its an object
+        //iterate through object usin a for in loop
+        for(let key in collection){
+            //determine if calling func and passing in its value, key and the object is true
+            if(func(collection[key], key, collection) === true){
+                //return true
+                return true;
+            }
+        }
+    }
+}
+//return false
+return false;
+}
 
 
 /** _.reduce
@@ -540,6 +641,13 @@ _.reduce = function(arr, func, seed){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+//added a default parameter
+_.extend = function(obj1, obj2, output={}){
+//create a variable holding object.assign that aputs in all input objects inside of it;
+var obj1 = Object.assign(obj1, obj2, output);
+//return updated obj1;
+return obj1;
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
