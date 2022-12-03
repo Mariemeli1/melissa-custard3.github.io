@@ -2,7 +2,9 @@
 // min /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function min() {
+function min(num1, num2) {
+  //use Math.min to return the minimum
+return Math.min(num1, num2);
 
 }
 
@@ -10,24 +12,60 @@ function min() {
 // isEven //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function isEven() {
-
+function isEven(num) {
+  //determine if num is a negative number
+  if (num < 0) {
+    //return function invocation passing in negative number
+    return isEven(-num);
+    //else if number is positive
+} else if (num === 1) {
+  //return false
+    return false;
+   // else if number is 0 or even
+} else if  (num === 0) {
+  //return true
+    return true;
+} else {//else
+  //return function call passing in num - 2 
+    return isEven(num - 2);
+}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countChars //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countChars() {
-
+function countChars(string, char) {
+  //create a count variable
+  let count = 0;
+  //iterate through string
+  for(let i = 0; i < string.length; i++){
+  //determine if string has the input character
+  if(string[i].includes(char)){
+    //increment count
+    count++
+  }
+}
+//return count
+return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // countBs /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function countBs() {
-
+function countBs(str) {
+  //create a count variable
+  var count = 0;
+  //loop through string
+  for(let i = 0; i < str.length; i++){
+  //determine if str has uppercase B's
+  if(str[i].includes('B')){
+    //increment count
+    count++
+  }
+}//return count variable
+  return count;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
