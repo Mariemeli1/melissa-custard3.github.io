@@ -73,22 +73,36 @@ var youngestCustomer = function(array){
 };
 
 var averageBalance = function(array){
-    let avg = _.reduce(array, function(acc, current){
-      //added and assigned accumulator to current balance
-     return acc += current.balance;
-  //seed value of 0 to return a number
+    let sum = _.reduce(array, function(acc, current){
+        return acc += parseFloat(current.balance.replace(/[$,]/g, ""));
     }, 0)
-    //created a variable to hold the balance
-    var bal = avg / array.length;
-    //use replace method and regex to replace the dollar sign and the commas
-    bal.replace(/[$, ,]/g, "");
-    //return balance
-    return bal;
-  };
+    return sum / array.length;
+};
+  
+//takes in a array and a letter
+//outputs a number
+var firstLetterCount = function(array, letter){
+    //create a variable that uses reduce to get the first letter count
+    let first = _.filter(array, function(customer){
+        //determine if customers has  same first letter as input letter
+        return customer.name[0].toLowerCase() === letter.toLowerCase();
+    })
+    return first.length;
+};
 
-var firstLetterCount;
-
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+    let friend = _.filter(array, function(customer, index){
+        //determine if array has a customer name
+        if(array[index].name === customer){
+            _.reduce(array, function(acc, current){
+                if(current.friends.name[0].toLowerCase() === letter.toLowerCase());
+                acc++;
+            })
+            return acc;
+        }
+    })
+    return friend;
+};
 
 var friendsCount;
 
