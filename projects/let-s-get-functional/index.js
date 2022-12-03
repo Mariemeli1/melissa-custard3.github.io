@@ -73,35 +73,31 @@ var youngestCustomer = function(array){
 };
 
 var averageBalance = function(array){
-    let sum = _.reduce(array, function(acc, current){
+    let num = _.reduce(array, function(acc, current){
+        // assign acc to parsefloat that returns a number and use replace to replace $ and ,.
         return acc += parseFloat(current.balance.replace(/[$,]/g, ""));
-    }, 0)
-    return sum / array.length;
+    }, 0)//seed value of 0
+    //return that number divided by the length of the array to geth the balance 
+    return num / array.length;
 };
   
 //takes in a array and a letter
 //outputs a number
 var firstLetterCount = function(array, letter){
-    //create a variable that uses reduce to get the first letter count
+    //create a variable that uses filter to get the first letter count
     let first = _.filter(array, function(customer){
         //determine if customers has  same first letter as input letter
         return customer.name[0].toLowerCase() === letter.toLowerCase();
-    })
+    })//return length of first
     return first.length;
 };
 
 var friendFirstLetterCount = function(array, customer, letter){
     let friend = _.filter(array, function(customer, index){
-        //determine if array has a customer name
-        if(array[index].name === customer){
-            _.reduce(array, function(acc, current){
-                if(current.friends.name[0].toLowerCase() === letter.toLowerCase());
-                acc++;
-            })
-            return acc;
-        }
-    })
-    return friend;
+     //return the first letter of customers friends name that begin with input letter
+        return customer.friends.name[0].toLowerCase() === letter.toLowerCase();
+    })//return the length
+    return friend.length;
 };
 
 var friendsCount;
