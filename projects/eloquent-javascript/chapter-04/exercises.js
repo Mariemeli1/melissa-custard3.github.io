@@ -2,16 +2,33 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(start, end) {
+function range(start, end, num) {
   //create an array to later return 
   let arr = [];
-  //create new array
-  let array= [];
-  //iterate 
-  for(let i = start; i <= end; i += 2){
+  //if start is equal to end
+  if(start === end){
+    //return array
+    return arr;
+  }//check if num has a value
+  if(num !== undefined){
+  //check if num is less than o
+  if(num < 0){
+  //return array
+  return arr;
+  }
+     //iterate 
+     for(let i = start;  i <= end; i += num){
+      //push everything from start to end inside of array
+      arr.push(i);
+    }
+  } else{
+    //iterate 
+  for(let i = start;  i <= end; i++){
     //push everything from start to end inside of array
     arr.push(i);
   }
+  }
+  
   //return array
   return arr;
 }
@@ -56,7 +73,7 @@ return array.reverse();
 function arrayToList(array) {
 //change array to an list
 
-//set list to null
+//set a varible list to null
 let list = null;
 //iterate through array in reverse
     for (let i = array.length - 1; i >= 0; i--) {
@@ -70,10 +87,20 @@ let list = null;
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray(obj) {
-  //map will return an array
-  return obj.map((a, b) => a + b, 0)
-  
+function listToArray(obj, output=[]) {
+  //check if rest is null
+    if(obj.rest === null){
+      //push in value to output array
+      output.push(obj.value)
+      //return output
+      return output;
+    }
+    //push value into output array
+    output.push(obj.value);
+    //delete the value
+    delete obj.value;
+    //return function call passing in the value rest and the output array
+  return listToArray(obj.rest , output);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
