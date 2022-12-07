@@ -46,18 +46,16 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
- if(n === 0){
-  return true;
- }
- if(Math.floor(n / 2) * 2 === n) {
-  return true;
-} else if(Math.floor(n / 2) * 2 !== n){
+ if(n === 1){
   return false;
+ }else if(n === 0) {
+  return true;
 }
+return isEven(Math.abs(n) - 2);
 
-return n + isEven(n - 1);
+}
  
-};
+
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
@@ -78,7 +76,23 @@ var sumBelow = function(n) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, output=[]) {
+  if(x === y){
+    return output;
+  } else if(x < y){
+    if(x + 1 === y){
+      return output;
+    }
+    output.push(x + 1)
+    return range(x + 1, y, output)
+  }else if(x > y){
+    if(x - 1 === y){
+      return output;
+    }
+    output.push(x - 1)
+    return range(x - 1, y, output)
+  }
+
 };
 
 // 7. Compute the exponent of a number.
@@ -86,7 +100,24 @@ var range = function(x, y) {
 // 8^2 = 8 x 8 = 64.  Here, 8 is the base and 2 is the exponent.
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
-var exponent = function(base, exp) {
+var exponent = function(base, exp, output=base) {
+  if(exp === -1){
+    output = 1 / output;
+    return output;
+  }
+  if(exp < 0){
+      output *= base;
+    return exponent(base, exp, output)
+  }else if(exp === 0){
+    return 1;
+  }else if(exp === 1){
+    return base;
+  }else if(exp === 2){
+    output *= base;
+    return output;
+  }
+  output *= base;
+  return exponent(base, exp - 1, output);
 };
 
 // 8. Determine if a number is a power of two.
@@ -94,14 +125,44 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if (n === 0){
+  return false;
+  }
+  if (n === 1){
+   return true;
+  }
+  if (n%2 !== 0) {
+    return false;
+  }
+  return powerOfTwo(n / 2);
 };
 
 // 9. Write a function that accepts a string a reverses it.
-var reverse = function(string) {
+var reverse = function(string, str=string.split(""), output ="") {
+  if(str.length === 0){
+  return output;
+  }
+ output += str[str.length-1];
+ str.pop();
+  return reverse(string, str, output)
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function(string, str=string.split(""), reverse='') {
+  if(str.length === 0){
+    string = string.replace(" ", '')
+    reverse = reverse.replace(" ", '')
+    string = string.toLowerCase()
+    reverse = reverse.toLowerCase()
+    if(string === reverse){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  reverse += str[str.length - 1];
+  str.pop();
+  return palindrome(string, str, reverse);
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -115,12 +176,18 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
-var multiply = function(x, y) {
+var multiply = function(x, y, num=0) {
+  if(y === 0){
+    return num;
+  }
+   num += x
+   return multiply(x, y - 1, num)
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
 // JavaScript's Math object.
 var divide = function(x, y) {
+ 
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers.  The GCD of two
@@ -136,7 +203,16 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
-var compareStr = function(str1, str2) {
+var compareStr = function(str1, str2, s1=str1.split(""), s2=str2.split("")) {
+
+  if(str1.length !== str2.length){
+    return false;
+  }
+  if(s1[0].toLowerCase() === s2[0].toLowerCase()){
+    if(s1.length === 1){
+    return compareStr(str1, str2, s1.slice(1), )
+    }
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
