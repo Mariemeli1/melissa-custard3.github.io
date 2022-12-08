@@ -265,8 +265,12 @@ var countOccurrence = function(array, value, count=0) {
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
-  
+var rMap = function(array, callback, output=[]) {
+  if(array.length === 0){
+    return output;
+  }
+  output.push(callback(array[0]))
+  return rMap(array.slice(1), callback, output)
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -302,17 +306,44 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
+  //if n is strictly equal to 0
+  if(n === 0){
+    //return 0
+    return 0;
+  }
+  //if n is less than 0
+  if(n < 0){
+    //return null
+    return null;
+  }
+  //if n is less than 2
+  if(n < 2){
+    //return input n
+    return n;
+  }
+  //return function call twice, once minusing 1 at each iteration and the other minusing 2 at each iteration
+  return nthFibo(n - 1) + nthFibo(n - 2);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
-var capitalizeWords = function(input) {
+var capitalizeWords = function(input, output=[]) {
+  if(input.length === 0){
+    return output;
+  }
+  output.push(input[0].toUpperCase())
+  return capitalizeWords(input.slice(1), output)
 };
 
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
-var capitalizeFirst = function(array) {
+var capitalizeFirst = function(array, output=[]) {
+  if(array.length === 0){
+    return output;
+  }
+  output.push(array[0].charAt(0).toUpperCase() + array[0].slice(1))
+  return capitalizeFirst(array.slice(1), output)
 };
 
 // 28. Return the sum of all even numbers in an object containing nested objects.
@@ -334,7 +365,16 @@ var flatten = function(arrays) {
 
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
-var letterTally = function(str, obj) {
+var letterTally = function(str, obj={}) {
+  if(str.length === 0){
+    return obj;
+  }
+  if(!Object.keys(obj).includes(str.charAt(0))){
+    obj[str.charAt(0)] = 1;
+  } else {
+    obj[str.charAt(0)]++;
+  }
+  return letterTally(str.substring(1), obj);
 };
 
 // 31. Eliminate consecutive duplicates in a list.  If the list contains repeated
@@ -342,7 +382,14 @@ var letterTally = function(str, obj) {
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-var compress = function(list) {
+var compress = function(list, output=[]) {
+  if(list.length === 0){
+    return output;
+  }
+  if(list[0] === output[0]){
+    output.push();
+  }
+  return compress(list.slice(1), output);
 };
 
 // 32. Augment every element in a list with a new value where each element is an array
