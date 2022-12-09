@@ -386,8 +386,9 @@ var compress = function(list, output=[]) {
   if(list.length === 0){
     return output;
   }
-  if(list[0] === output[0]){
-    output.push();
+  if(list[0] !== output[output.length-1]){
+    output.push(list[0]);
+    
   }
   return compress(list.slice(1), output);
 };
@@ -401,20 +402,65 @@ var augmentElements = function(array, aug) {
 // 33. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
-var minimizeZeroes = function(array) {
+var minimizeZeroes = function(array, output=[]) {
+  if(array.length === 0){
+    return output;
+  }
+  if(array[0] !== output[output.length - 1]){
+    output.push(array[0]);
+  }
+  return minimizeZeroes(array.slice(1), output)
 };
 
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
+var alternateSign = function(array, output=[]) {
+if(array.length === 0){
+  return output;
+}
+if(output.length % 2 === 0){
+  output.push(Math.abs(array[0]));
+} else {
+  output.push(-Math.abs(array[0]));
+}
+
+return alternateSign(array.slice(1), output);
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
-var numToText = function(str) {
+var numToText = function(str, output="") {
+  if(str.length === 0){
+    return output;
+  }
+  if(str.charAt(0) === '0'){
+    output += 'zero'
+  } else if(str.charAt(0) === '1'){
+    output += 'one'
+  } else if(str.charAt(0) === '2'){
+    output += 'two'
+  } else if(str.charAt(0) === '3'){
+    output += 'three'
+  } else if(str.charAt(0) === '4'){
+    output += 'four'
+  } else if(str.charAt(0) === '5'){
+    output += 'five'
+  }else if(str.charAt(0) === '6'){
+    output += 'six'
+  } else if(str.charAt(0) === '7'){
+    output += 'seven'
+  } else if(str.charAt(0) === '8'){
+    output += 'eight'
+  } else if(str.charAt(0) === '9'){
+    output += 'nine'
+  } else{
+    output += str.charAt(0);
+  }
+  
+  return numToText(str.substring(1), output )
 };
 
 // *** EXTRA CREDIT ***
