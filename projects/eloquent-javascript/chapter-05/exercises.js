@@ -2,7 +2,13 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
+function flatten(array) {
+  //ask alex about this and Python tutor
+  let flatten = array.reduce(function(acc, curr){
+      acc += curr;
+      return acc;
+  },[]);
+ return flatten;
 
 }
 

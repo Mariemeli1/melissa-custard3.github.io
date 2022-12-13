@@ -108,7 +108,7 @@ function listToArray(obj, output=[]) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function prepend(value, list) {
-  //return object with value prepended to the front
+  //return object with value prepended to the
   return {value, rest: list};
 
 }
