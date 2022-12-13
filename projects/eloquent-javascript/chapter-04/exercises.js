@@ -9,13 +9,13 @@ function range(start, end, num) {
   if(start === end){
     //return array
     return arr;
-  }//check if num has a value
-  if(num !== undefined){
-  //check if num is less than o
-  if(num < 0){
-  //return array
-  return arr;
-  }
+  } //check if num has a value
+    if(num !== undefined){
+    //check if num is less than o
+      if(num < 0){
+      //return array
+      return arr;
+    }
      //iterate 
      for(let i = start;  i <= end; i += num){
       //push everything from start to end inside of array
@@ -23,7 +23,7 @@ function range(start, end, num) {
     }
   } else{
     //iterate 
-  for(let i = start;  i <= end; i++){
+    for(let i = start;  i <= end; i++){
     //push everything from start to end inside of array
     arr.push(i);
   }

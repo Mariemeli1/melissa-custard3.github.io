@@ -93,31 +93,47 @@ var firstLetterCount = function(array, letter){
 };
 
 var friendFirstLetterCount = function(array, cust, letter){
-    let friend = _.filter(array, function(customer, index){
         //create a count variable
         var count = 0;
         //loop through customers array
-        for(let i = 0; i < customer.length; i++){
+        for(let i = 0; i < array.length; i++){
         //determine if array has a customer name
-            if(customer[i].name === cust){
+            if(array[i].name === cust){
             //filter through the customer friends array to find customers friends with the input letter
-                customer[i].friends.filter(function(current){
+           var friend = array[i].friends.filter(function(current){
                 //determine if current customer has a friend with the same 1st letter as input letter
                     if(current.name[0].toLowerCase() === letter.toLowerCase()){
                 //increment count variable
                         count++;
                     }
-                //return count
-                     return count;
                 })
+                //return count
+                return count;
             }
         }
-    })
+    
     //return friend.length
     return friend.length;
 };
 
-var friendsCount;
+var friendsCount = function(array, name){
+    //loop through customers array
+    for(let i = 0; i < array.length; i++){
+        //determine if array has a customer name
+            if(array[i].name === name){
+            //filter through the customer friends array to find customers friends with the input letter
+           var friendName = array[i].friends.filter(function(current){
+                //determine if current customer has a friend with the same 1st letter as input letter
+                    if(current[i].name === name){
+                        return current;
+                    }
+                })
+               
+            }
+        }
+        return friendName;
+};
+//npm start --prefix ./melissa-custard3.github.io/projects/let-s-get-functional
 
 var topThreeTags;
 
