@@ -107,7 +107,9 @@ function listToArray(obj, output=[]) {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
+function prepend(value, list) {
+  //return object with value prepended to the front
+  return {value, rest: list};
 
 }
 
@@ -115,9 +117,21 @@ function prepend() {
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
-
+function nth(list, num) {
+  //if list is not given 
+  if (!list){
+    //return undefined
+    return undefined;
+    //else if num is equal to 0
+  }else if (num == 0){
+    //return list with key of value
+     return list.value;
+  } else{//else
+    //return function call passing in list with a key of rest and passing in num minusing 1 at each iteration
+     return nth(list.rest, num - 1);
+  }
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////

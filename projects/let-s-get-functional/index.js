@@ -127,8 +127,7 @@ var friendsCount = function(array, name){
                     if(current[i].name === name){
                         return current;
                     }
-                })
-               
+                })  
             }
         }
         return friendName;
