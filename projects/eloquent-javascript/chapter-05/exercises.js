@@ -5,9 +5,11 @@
 function flatten(array) {
   //ask alex about this and Python tutor
   let flatten = array.reduce(function(acc, curr){
+    //assign current to accumulator
       acc += curr;
+      //return accumulator
       return acc;
-  },[]);
+  },[]);//seed value of array
  return flatten;
 
 }
