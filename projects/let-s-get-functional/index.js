@@ -140,7 +140,21 @@ var friendsCount = function(array, name){
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = function(array){
+    let gender = array.reduce(function(acc, curr){
+        //determine if object (acc) has a key of gender
+        if(acc[curr.gender]){
+            //increment that gender key by 1
+            acc[curr.gender] += 1;
+        } else{//else
+            //assign that key of gender to 1
+            acc[curr.gender] = 1;
+        }//return acc
+        return acc;
+    }, {});//seed value of 0
+    //return gender
+    return gender;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
