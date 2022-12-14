@@ -151,13 +151,16 @@ var topThreeTags = function(array){
     }
     //create empty object
     var obj = {};
-    //determine if tag exists in object as a key
-    if(obj[tag]){
+    //iterate through tags
+    for(let i = 0; i < tag.length; i++){
+      //determine if tag exists in object as a key
+      if(obj[tag[i]]){
         //if it does increment by 1
-        obj[tag] += 1;
-    }else {//else
+        obj[tag[i]] += 1;
+      }else {//else
         //assign it the value of 1
-        obj[tag] = 1;
+        obj[tag[i]] = 1;
+      }
     }
 };
 
