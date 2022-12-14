@@ -117,20 +117,24 @@ var friendFirstLetterCount = function(array, cust, letter){
 };
 
 var friendsCount = function(array, name){
-    //loop through customers array
-    for(let i = 0; i < array.length; i++){
-        //determine if array has a customer name
-            if(array[i].name === name){
-            //filter through the customer friends array to find customers friends with the input letter
-           var friendName = array[i].friends.filter(function(current){
-                //determine if current customer has a friend with the same 1st letter as input letter
-                    if(current[i].name === name){
-                        return current;
-                    }
-                })  
-            }
+    let filtered = array.filter(function(customer){
+        //iterate through customers friends array
+        for(let i = 0; i < customer.friends.length; i++){
+        //determine if customer friends array contains the input friend
+        if(customer.friends[i].name === name){
+            //return true
+            return true;
         }
-        return friendName;
+       }
+       //return false
+       return false;
+       //map through filtered usinga method chain
+    }).map(function(customer){
+        //return customers name
+        return customer.name;
+    });
+    //return filtered
+   return filtered;
 };
 //npm start --prefix ./melissa-custard3.github.io/projects/let-s-get-functional
 
