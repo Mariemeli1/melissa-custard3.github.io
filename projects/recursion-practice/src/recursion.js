@@ -125,13 +125,17 @@ var exponent = function(base, exp, output=base) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //if n is equal to 0
   if (n === 0){
+    //return false
   return false;
-  }
+  }//if n is equal to 1
   if (n === 1){
+    //return true
    return true;
-  }
+  }//if n remainder of 2 is not 0
   if (n%2 !== 0) {
+    //return false
     return false;
   }
   return powerOfTwo(n / 2);

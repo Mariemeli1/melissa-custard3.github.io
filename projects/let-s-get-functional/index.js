@@ -138,7 +138,28 @@ var friendsCount = function(array, name){
 };
 //npm start --prefix ./melissa-custard3.github.io/projects/let-s-get-functional
 
-var topThreeTags;
+var topThreeTags = function(array){
+    //create an empty array to later collect every tag in 
+    var tag = [];
+    //iterate through input array
+    for(let i = 0; i < array.length; i++){
+        //iterate through tags
+        for(let m = 0; m < array[i].tags.length; i++){
+            //push in tags into tag array
+            tag.push(array[i].tags[m]);
+        }
+    }
+    //create empty object
+    var obj = {};
+    //determine if tag exists in object as a key
+    if(obj[tag]){
+        //if it does increment by 1
+        obj[tag] += 1;
+    }else {//else
+        //assign it the value of 1
+        obj[tag] = 1;
+    }
+};
 
 var genderCount = function(array){
     let gender = array.reduce(function(acc, curr){
