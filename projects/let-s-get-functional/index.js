@@ -172,7 +172,7 @@ var topThreeTags = function(array){
         subbie.push([key, obj[key]])
     }
   //using the sort method to sort the elements of theTop array
-  theTop = subbie.sort(function(a, b){
+  let theTop = subbie.sort(function(a, b){
         //minusing the lowest from the greatest
         return b[1] - a[1];
     });
