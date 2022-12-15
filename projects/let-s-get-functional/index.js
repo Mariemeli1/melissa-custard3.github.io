@@ -144,7 +144,7 @@ var topThreeTags = function(array){
     //iterate through input array
     for(let i = 0; i < array.length; i++){
         //iterate through tags
-        for(let m = 0; m < array[i].tags.length; i++){
+        for(let m = 0; m < array[i].tags.length; m++){
             //push in tags into tag array
             tag.push(array[i].tags[m]);
         }
@@ -162,6 +162,29 @@ var topThreeTags = function(array){
         obj[tag[i]] = 1;
       }
     }
+
+    //console.log(obj);
+    //create a empty array to store sub arrays
+    var subbie = [];
+    //iterate through object
+    for(var key in obj){
+      //push in the objects keys and values stored in an array
+        subbie.push([key, obj[key]])
+    }
+  //using the sort method to sort the elements of theTop array
+  theTop = subbie.sort(function(a, b){
+        //minusing the lowest from the greatest
+        return b[1] - a[1];
+    });
+  //create another array
+  var completed = [];
+  //iterate starting at 0, stopping at 3
+  for(var g = 0; g < 3; g++){
+    //pushing the top three values into my complete array
+    completed.push(theTop[g][0])
+  }
+  //return complete array
+  return completed;
 };
 
 var genderCount = function(array){
