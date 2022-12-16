@@ -3,14 +3,8 @@
 // /////////////////////////////////////////////////////////////////////////////
 
 function flatten(array) {
-  //ask alex about this and Python tutor
-  let flatten = array.reduce(function(acc, curr){
-    //assign current to accumulator
-      acc.push(curr);
-      //return accumulator
-      return acc;
-  },[]);//seed value of array
- return flatten;
+  //use the flatten method to flatten the arrays
+  return array.flat();
 
 }
 
@@ -18,8 +12,10 @@ function flatten(array) {
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
+function loop(begin, test, update, body) {
+  for (let value = begin; test(value); value = update(value)) {
+    body(value);
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
