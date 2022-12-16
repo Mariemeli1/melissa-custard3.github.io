@@ -106,7 +106,9 @@ var contestants = function(){
 
 
 // 3.
+//iterate through dogs array using filter
 var filterSpecies = dogs.filter(function(current){
+    //return an array of all the species that are dogs
     return current.species === 'dog';
 })
 
@@ -114,6 +116,7 @@ var filterSpecies = dogs.filter(function(current){
 
 
 // 4. 
+//using the spread operator to return an array of only dogs
 var dogContestants = [...filterSpecies];
 
 
