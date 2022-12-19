@@ -27,7 +27,55 @@ function loop(begin, test, update, body) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
+function every(collection, func) {
+  //determine if func was not passed in
+ if(func === undefined ){
+  //determine if collection is an array
+  if(Array.isArray(collection)){
+      //iterate through collections array
+      for(let i = 0; i < collection.length; i++){
+          //determine if collection[i] is false
+          if(collection[i] === false){
+              //return false;
+              return false;
+          }
+      }
+  } else { //else
+      //iterate through object
+      for(let key in collection){
+          //determine if collection[key] is false
+          if(collection[key] === false){
+              //return false;
+              return false;
+          }
+      }
+  }
+
+} else{ //else
+//check if array is an array
+  if(Array.isArray(collection)){
+      //iterate through array
+      for(let i = 0; i < collection.length; i++){
+          //determine if calling func and passing in its current element, index and the array is false
+          if(func(collection[i], i, collection) === false){
+              //return false
+              return false;
+          }
+      }
+  } else{
+      //else its an object
+      //iterate through object usin a for in loop
+      for(let key in collection){
+          //determine if calling func and passing in its value, key and the object is false
+          if(func(collection[key], key, collection) === false){
+              //return false
+              return false;
+          }
+      }
+  }
+}
+//return true
+return true;
 
 }
 
